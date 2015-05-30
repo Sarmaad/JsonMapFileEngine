@@ -1,0 +1,29 @@
+﻿{
+    "Name": "Test customer credit card",
+    "IgnoreEmptyLines": true,
+    "Delimiter": ",",
+    "IgnoreFirstLines": 1,
+    "IgnoreLastLines": 0,
+    "Fields": [
+        {
+            "Source": "name",
+            "Destination": "CompanyName",
+            "Type": "String"
+        },
+        {
+            "Source": "email",
+            "Destination": "Email",
+            "Type": "String"
+        },
+        {
+            "Source": "mobile",
+            "Destination": "Mobile",
+            "Type": "String"
+        },
+        {
+            "Source": "creditCardNumber",
+            "Destination": "CreditCard",
+            "Type": "String"
+        }
+    ]
+}
