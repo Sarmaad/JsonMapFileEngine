@@ -30,7 +30,8 @@ namespace Engine
                 IgnoreEmptyLines = m.IgnoreEmptyLines,
                 Delimiter = m.Delimiter,
                 IgnoreFirstLines = m.IgnoreFirstLines,
-                IgnoreLastLines = m.IgnoreLastLines
+                IgnoreLastLines = m.IgnoreLastLines,
+               
             };
 
             var cols = new Dictionary<string, DelimitedFieldBuilder>();
@@ -45,13 +46,24 @@ namespace Engine
                 delimitedFieldBuilder.Value.QuoteMode = QuoteMode.OptionalForBoth;
             }
             var stype = c.CreateRecordClass();
-            var e = new FileHelperEngine(stype);
+            var e = new FileHelperEngine(stype)
+            {
+                ErrorMode = (ErrorMode) Enum.Parse(typeof (ErrorMode), m.ErrorMode)
+            };
             var d = e.ReadFileAsList(file);
 
             var exp = Mapper.CreateMap(stype, typeof(T));
             foreach (var field in m.Fields)
             {
-                exp.ForMember(field.Destination, opt => opt.MapFrom(field.Source));
+                if (string.IsNullOrWhiteSpace(field.Destination))
+                {
+                    exp.ForSourceMember(field.Source, opt => opt.Ignore());
+                }
+                else
+                {
+                    exp.ForMember(field.Destination, opt => opt.MapFrom(field.Source));    
+                }
+                
             }
 
             return Mapper.Map<T[]>(d);
@@ -66,7 +78,7 @@ namespace Engine
                     break;
             }
 
-            return null;
+            return typeof(string);
         }
     }
 }

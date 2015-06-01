@@ -16,11 +16,18 @@ namespace DynamicFileHelperMapping
 
             var engine = new JsonEngine(File.ReadAllText("mapping.json"));
 
-            var results = engine.Parse<MemberDetail>("Code-Review-Interview-Data-File.csv");
+            var results = engine.Parse<NewSt>("Code-Review-Interview-Data-File.csv");
 
 
         }
 
+        
+    }
+
+    public class NewSt
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
         
     }
 }

@@ -13,6 +13,7 @@ namespace DynamicFileHelperMapping
         public string Delimiter { get; set; }
         public int IgnoreFirstLines { get; set; }
         public int IgnoreLastLines { get; set; }
+        public string ErrorMode { get; set; }
         public Field[] Fields { get; set; }
     }
 
