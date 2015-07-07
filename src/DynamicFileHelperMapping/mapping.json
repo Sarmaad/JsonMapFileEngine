@@ -6,14 +6,24 @@
     "IgnoreLastLines": 0,
     "ErrorMode": "SaveAndContinue",
     "Fields": [
-       {
+        {
             "Source": "name",
-            "Destination": "Name",
+            "Destination": "FirstName",
             "Type": "String"
         },
         {
             "Source": "email",
             "Destination": "Email",
+            "Type": "String"
+        },
+        {
+            "Source": "mobile",
+            "Destination": "Mobile",
+            "Type": "String"
+        },
+        {
+            "Source": "creditCardNumber",
+            "Destination": "CreditCard",
             "Type": "String"
         }
     ]
